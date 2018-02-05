@@ -20,6 +20,7 @@ attr_accessor :coach
         return true
       end
     end
+    return false
   end
 
   def add_points_if_won_or_lost(won_or_lost)

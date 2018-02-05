@@ -34,9 +34,14 @@ class TestTeam < MiniTest::Test
     assert_equal(["Kane", "Erikson", "Alli", "Lloris", "Son"], players)
   end
 
-  def test_find_player_in_team
+  def test_find_player_in_team__found
     result = @team.find_player("Lloris")
     assert_equal(true, result)
+  end
+
+  def test_find_player_in_team__not_found
+    result = @team.find_player("Bob")
+    assert_equal(false, result)
   end
 
   def test_return_points
@@ -44,13 +49,13 @@ class TestTeam < MiniTest::Test
     assert_equal(0, points)
   end
 
-  def test_add_points_if_won
+  def test_add_points_if_won_or_lost__won
     @team.add_points_if_won_or_lost("won")
     points = @team.points()
     assert_equal(3, points)
   end
 
-  def test_no_points_added_if_lost
+  def test_add_points_if_won_or_lost__lost
     @team.add_points_if_won_or_lost("lost")
     points = @team.points()
     assert_equal(0, points)
